@@ -44,7 +44,7 @@ var Tweensy = (function() {
 		var i = prefixes.length,
 			delay = obj.delay || 0,
 			ease = obj.ease || "linear",
-			settings = duration ? 'all ' + duration + 's ' + eases[ease] + ' ' + delay + 's': 'none',
+			settings = duration ? 'all ' + duration + 's ' + (eases[ease] || ease) + ' ' + delay + 's': 'none',
 			complete, getEase;
 
 		complete = function() {

@@ -37,12 +37,17 @@
     <div id="block"></div>
 </div>
 <div id="start-point"></div>
-<script src="js/go.js"></script>
+<script src="js/Tweensy.js"></script>
 <script>
 
     window.onload = function() {
         var block = document.getElementById('block');
-        go.to(block, 1, {x:500, rotate:180, ease:'expo-ease-in-out', delay:1, onComplete:function() {
+        Tweensy.to(block, 1, {
+            x:500,
+            rotate:180,
+            ease:'cubic-bezier(0.680, -0.550, 0.265, 1.550)',
+            delay:1,
+            onComplete:function() {
             /*go.to(block, 0.5, {y:0, onComplete:function() {
                 go.to(block, 0.5, {y:250, rotate:45, delay:1});
             }});*/
