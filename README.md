@@ -6,6 +6,13 @@ The main goal of Tweensy.js is small file size while enabling web animators to t
 
 ##### Example Usage
 ```
-Tweensy.to(el, 0.5, {x:500, ease:'quad-ease-in-out', delay:0.35, onComplete:myFunction, onCompleteParams:['foo','bar'] );
+Tweensy.to(el, 0.5, {
+	x:500, 
+	ease:'quad-ease-in-out', 
+	delay:0.35, 
+	onComplete:myFunction, 
+	onCompleteParams:['foo','bar'] 
+	}
+);
 
 ```
