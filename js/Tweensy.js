@@ -41,6 +41,7 @@ var Tweensy = (function() {
 	eases[bk + eio] = cb + '(0.680, -0.550, 0.265, 1.550)';
 
 	to = function(target, duration, obj) {
+		//test
 		var i = prefixes.length,
 			delay = obj.delay || 0,
 			ease = obj.ease || "linear",
