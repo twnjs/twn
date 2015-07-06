@@ -6,7 +6,7 @@ var Tweensy = (function() {
 		ei = 'ease-in', o ='-out', eo = 'ease-out', eio='ease-in-out',
 		eases = {}, qd = 'quad-', cu = 'cubic-', qt = 'quart-',
 		qn = 'quint-', si = 'sine-', ex = 'expo-', ci = 'circ-',
-		bk= 'back-';
+		bk= 'back-', id = parseInt(Math.random() * 10000);
 
 	eases.linear = 'linear';
 	eases[ei] = ei;
@@ -69,25 +69,25 @@ var Tweensy = (function() {
 	};
 
 	set = function(target, obj) {
-		var j, transform, translate = '', rotate = '', scale = '';
+		var j, transform, translate = '', rotation = '', scale = '';
 		for(j in obj) {
 			if(!/delay|ease|onComplete|onCompleteParams|scope/.test(j)) {
 				if(/left|width|top|height|margin|padding/.test(j)) {
 					target.style[j] = obj[j] + 'px';
-				} else if (/^x|^y|rotate|scaleX|scaleY/.test(j)) {
+				} else if (/^x|^y|rotation|scaleX|scaleY/.test(j)) {
 					transform = true;
 					//need to change from id to something else
 					if(!translations[target.id]) {
-						translations[target.id] = {
+						translations[(target.id || (target.id = "twn" + id++))] = {
 							id:target.id,
 							x:0,
 							y:0,
-							rotate:0,
+							rotation:0,
 							scaleX:1,
 							scaleY:1,
 							xOffset:target.offsetLeft,
 							yOffset:target.offsetTop,
-							rotateOffset:0,
+							rotationOffset:0,
 							scaleXOffset:0,
 							scaleYOffset:0
 						};
@@ -104,8 +104,8 @@ var Tweensy = (function() {
 		if(transform) {
 			translate = ' translate(' + translations[target.id].x + 'px, ' + translations[target.id].y + 'px)';
 			scale = ' scale(' + translations[target.id].scaleX + ', ' + translations[target.id].scaleY + ')';
-			rotate = ' rotate(' + translations[target.id].rotate + 'deg)';
-			target.style.WebkitTransform = target.style.transform = translate + scale + rotate;
+			rotation = ' rotate(' + translations[target.id].rotation + 'deg)';
+			target.style.WebkitTransform = target.style.transform = translate + scale + rotation;
 
 		}
 	};

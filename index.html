@@ -4,18 +4,26 @@
     <meta charset="UTF-8">
     <title></title>
     <style>
-        #block {
+        body {
+            -webkit-transform: translate3d(0, 0, 0);
+        }
+
+        .block {
             display:block;
-            top:-50px;
             position:absolute;
-            width: 50px; height: 50px;
-            background-color: black;
+            width: 10px; height: 10px;
+            -webkit-transform: translate3d(0, 0, 0);
+            -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
+            background-color: green;
         }
         #ad{
             position:absolute;
-            top:100px; left:100px;
+            top:500px; left:500px;
             width:300px; height:250px;
             background-color: lightgray;
+            -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
         }
         #back {
             position:absolute;
@@ -33,31 +41,71 @@
 </head>
 <body>
 <div id="back"></div>
-<div id="ad">
-    <div id="block"></div>
-</div>
-<div id="start-point"></div>
+<div id="ad"><div class="block"></div></div>
 <script src="js/Tweensy.js"></script>
+<script src="TweenMax.js"></script>
 <script>
+    (function() {
+        var ad = document.getElementById('ad'), i = 0, interval, create, getSign;
 
-    window.onload = function() {
-        var block = document.getElementById('block');
-        Tweensy.to(block, 1, {
-            x:500,
-            rotate:180,
-            ease:'cubic-bezier(0.680, -0.550, 0.265, 1.550)',
-            delay:1,
-            onComplete:function() {
-            /*go.to(block, 0.5, {y:0, onComplete:function() {
-                go.to(block, 0.5, {y:250, rotate:45, delay:1});
-            }});*/
-        }});
-        /*go.to(block, 0.5, {x:250, y:0, ease:'ease-out', onComplete:function() {
-            go.to(block, 0.5, {y:250, delay:1, ease:'ease-out', onComplete:function() {
-                go.to(block, 0.5, {x:0, y:0, ease:'ease-out'})
-            }});
-        }});*/
-    }
+        create = function() {
+           if(i < 100) {
+               var el = document.createElement("div"),
+                       scale = parseInt(4 * Math.random()) + 1;
+               el.className = "block";
+               el.style.backgroundColor = 'rgba(' + parseInt(255 * Math.random())
+               + "," + parseInt(255 * Math.random())
+               + "," + parseInt(255 * Math.random())
+               + "," + "1" + ")";
+               ad.appendChild(el);
+
+               Tweensy.to(el, 0.5, {
+                   x:window.outerWidth * Math.random() * getSign() * 0.25,
+                   y:window.outerHeight * Math.random() * getSign() * 0.25,
+                   rotation:parseInt(360 * Math.random()),
+                   scaleX:scale, scaleY:scale,
+                   ease:"circ-ease-out"});
+           } else {
+               clearInterval(interval);
+           }
+            i++;
+
+        };
+
+        getSign = function() {
+            return Math.random() < 0.5 ? -1 : 1;
+        };
+
+        window.onload = function() {
+            interval = setInterval(create, 100);
+            var block = document.querySelectorAll(".block")[0];
+            //Tweensy.set(block, {backgroundColor:"red", x:200,y:200, scaleX:5, scaleY:5});
+            /*var block = document.querySelectorAll('.block')[0],
+             block1 = document.querySelectorAll('.block')[1];
+             Tweensy.to(block, 1, {
+             x:500,
+             rotate:180,
+             ease:'cubic-bezier(0.680, -0.550, 0.265, 1.550)',
+             delay:1,
+             onComplete:function() {
+             Tweensy.to(block, 0.5, {y:0, onComplete:function() {
+             Tweensy.to(block, 0.5, {x:0, y:0, rotate:45, delay:1});
+             }});
+             }});
+             Tweensy.to(block1, 3, {x:450, y:450, ease:'quart-ease-in-out', onComplete:function(){
+             Tweensy.to(block1, 1, {x:0, y:0, delay:0.5, ease:'quart-ease-in-out', onComplete:function(){
+
+             }});
+             }});*/
+            /*go.to(block, 0.5, {x:250, y:0, ease:'ease-out', onComplete:function() {
+             go.to(block, 0.5, {y:250, delay:1, ease:'ease-out', onComplete:function() {
+             go.to(block, 0.5, {x:0, y:0, ease:'ease-out'})
+             }});
+             }});*/
+        }
+
+    }());
+
 
 </script>
 </body>
