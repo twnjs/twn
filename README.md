@@ -35,8 +35,7 @@ The duration of the animation in seconds.
 **properties**  
 Type:Object  
 An object of properties and values to animate as well as callbacks for completion.  
-**CSS Properties**  
-	
+	**CSS Properties**  
     **x**  
     Type:Number  
     X translation value to animate to  
@@ -72,7 +71,6 @@ An object of properties and values to animate as well as callbacks for completio
     **marginTop, marginBottom, marginLeft, marginRight, paddingTop, etc..**
     
 **Additional Properties**  
-
 	**ease**  
 	Type:String  
 	(default: Linear)  
