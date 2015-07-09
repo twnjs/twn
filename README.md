@@ -24,7 +24,7 @@ function to(target, duration, properties);
 Initializes and starts an animation.
 
 **target** 
----
+------
 Type:DOM Element
 A DOM element for twn to animate.
 
