@@ -1,4 +1,4 @@
-# Tweensy.js: 
+# twn.js: 
 
 ##A Light Weight Javascript/ CSS3 Tweening Library
 
@@ -6,7 +6,7 @@ The main goal of Tweensy.js is small file size while enabling web animators to t
 
 ##### Example Usage
 ```
-Tweensy.to(el, 0.5, {
+twn.to(el, 0.5, {
 	x:500, 
 	ease:'quad-ease-in-out', 
 	delay:0.35, 

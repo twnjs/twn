@@ -1,4 +1,4 @@
-var Tweensy = (function() {
+var twn = (function() {
 
 	var prefixes = ['0', 'Moz', 'Webkit'], to, set, delay,
 		translations = {},

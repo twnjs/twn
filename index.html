@@ -42,8 +42,7 @@
 <body>
 <div id="back"></div>
 <div id="ad"><div class="block"></div></div>
-<script src="js/Tweensy.js"></script>
-<script src="TweenMax.js"></script>
+<script src="js/twn.js"></script>
 <script>
     (function() {
         var ad = document.getElementById('ad'), i = 0, interval, create, getSign;
@@ -59,7 +58,7 @@
                + "," + "1" + ")";
                ad.appendChild(el);
 
-               Tweensy.to(el, 0.5, {
+               twn.to(el, 0.5, {
                    x:window.outerWidth * Math.random() * getSign() * 0.25,
                    y:window.outerHeight * Math.random() * getSign() * 0.25,
                    rotation:parseInt(360 * Math.random()),
@@ -79,21 +78,21 @@
         window.onload = function() {
             interval = setInterval(create, 50);
             var block = document.querySelectorAll(".block")[0];
-            //Tweensy.set(block, {backgroundColor:"red", x:200,y:200, scaleX:5, scaleY:5});
+            //twn.set(block, {backgroundColor:"red", x:200,y:200, scaleX:5, scaleY:5});
             /*var block = document.querySelectorAll('.block')[0],
              block1 = document.querySelectorAll('.block')[1];
-             Tweensy.to(block, 1, {
+             twn.to(block, 1, {
              x:500,
              rotate:180,
              ease:'cubic-bezier(0.680, -0.550, 0.265, 1.550)',
              delay:1,
              onComplete:function() {
-             Tweensy.to(block, 0.5, {y:0, onComplete:function() {
-             Tweensy.to(block, 0.5, {x:0, y:0, rotate:45, delay:1});
+             twn.to(block, 0.5, {y:0, onComplete:function() {
+             twn.to(block, 0.5, {x:0, y:0, rotate:45, delay:1});
              }});
              }});
-             Tweensy.to(block1, 3, {x:450, y:450, ease:'quart-ease-in-out', onComplete:function(){
-             Tweensy.to(block1, 1, {x:0, y:0, delay:0.5, ease:'quart-ease-in-out', onComplete:function(){
+             twn.to(block1, 3, {x:450, y:450, ease:'quart-ease-in-out', onComplete:function(){
+             twn.to(block1, 1, {x:0, y:0, delay:0.5, ease:'quart-ease-in-out', onComplete:function(){
 
              }});
              }});*/
