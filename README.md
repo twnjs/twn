@@ -120,7 +120,7 @@ An object of properties and values to animate as well as callbacks for completio
 
 function set(target, object)
 
-Sets css values for a target.
+Sets css values for the target DOM element.
   
 **target**   
 Type:DOM Element  
