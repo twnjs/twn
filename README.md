@@ -73,9 +73,8 @@ An object of properties and values to animate as well as callbacks for completio
     Additional values to animate to
     
 **Additional Properties**  
-	**ease**  
+	**ease** (default: Linear)  
 	Type:String  
-	(default: Linear)  
 	An easing function. Add any easing function eg "cubic-bezier(1,1,1,1)".  
 		Built In Easing Functions  
 		-"ease-in"  
@@ -118,7 +117,7 @@ An object of properties and values to animate as well as callbacks for completio
 
 ### **set()**
 
-function set(target, object)
+function set(target, properties)
 
 Sets css values for the target DOM element.
   
