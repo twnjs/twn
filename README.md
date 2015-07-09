@@ -30,12 +30,12 @@ A DOM element for twn to animate.
 
 **duration**  
 Type:Number  
-The duration of the animation.
+The duration of the animation in seconds.
 
 **properties**  
 Type:Object  
 An object of properties and values to animate as well as callbacks for completion.  
-	**CSS Properties**  
+    **CSS Properties**  
     **x**  
     Type:Number  
     X translation value to animate to  
@@ -69,6 +69,7 @@ An object of properties and values to animate as well as callbacks for completio
     Type:Number  
     Opacity value to animate to  
     **marginTop, marginBottom, marginLeft, marginRight, paddingTop, etc..**  
+    
 	**Additional Properties**  
 	**ease**  
 	Type:String  
@@ -102,6 +103,9 @@ An object of properties and values to animate as well as callbacks for completio
         -"back-ease-in"  
         -"back-ease-out"  
         -"back-ease-in-out"  
+    **delay**  
+    Type:Number  
+    A delay in seconds before the animation begins  
 	**OnComplete**  
 	Type:Function  
 	A function to be called on complete  
