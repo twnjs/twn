@@ -70,6 +70,8 @@ An object of properties and values to animate as well as callbacks for completio
     Type:Number  
     Opacity value to animate to  
     **marginTop, marginBottom, marginLeft, marginRight, paddingTop, etc..**
+    Type:Number  
+    Additional values to animate to
     
 **Additional Properties**  
 	**ease**  
