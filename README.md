@@ -61,6 +61,7 @@ An object of properties and values to animate as well as callbacks for completio
     Type:Number  
     Width value to animate to  
     **height**  
+    Type:Number  
     Height value to animate to  
     **backgroundColor**  
     Type:String  
