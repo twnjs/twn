@@ -17,24 +17,22 @@ twn.to(el, 0.5, {
 
 ```
 ### Methods
+------
 
 #### **to()**
 
 function to(target, duration, properties);  
 Initializes and starts an animation.
 
-**target** 
-------
+**target**
 Type:DOM Element
 A DOM element for twn to animate.
 
 **duration**
----
 Type:Number
 The duration of the animation.
 
 **properties**
----
 Type:Object  
 An object of properties and values to animate as well as callbacks for completion.  
 	**CSS Properties**  
@@ -119,12 +117,10 @@ function set(target, object)
 Sets css values for a target.
   
 **target**   
----
 Type:DOM Element  
 A DOM element for twn to set css values on.
 
 **properties**  
----
 Type:Object  
 Same as object properties for function to().  
     
