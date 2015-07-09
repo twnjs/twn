@@ -16,10 +16,10 @@ twn.to(el, 0.5, {
 );
 
 ```
-### Methods
+## Methods
 ------
 
-#### **to()**
+### **to()**
 
 function to(target, duration, properties);  
 Initializes and starts an animation.
@@ -117,7 +117,7 @@ An object of properties and values to animate as well as callbacks for completio
 	An array of arguments for the complete function  
 
 
-#### **set()**
+### **set()**
 
 function set(target, object)
 
