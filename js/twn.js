@@ -6,7 +6,16 @@ var twn = (function() {
 		ei = 'ease-in', o ='-out', eo = 'ease-out', eio='ease-in-out',
 		eases = {}, qd = 'quad-', cu = 'cubic-', qt = 'quart-',
 		qn = 'quint-', si = 'sine-', ex = 'expo-', ci = 'circ-',
-		bk= 'back-', id = parseInt(Math.random() * 10000);
+		bk= 'back-', id = 0, T = "Top", B = "Bottom", L = "Left", R = "Right", M = "margin", P = "padding",
+		properties = ["top", "left",
+			"width", "height",
+			"x", "y",
+			"opacity", "backgroundColor",
+			"rotation", "scaleX", "scaleY",
+			M + T, M + R, M + B, M + L,
+			P + T, P + R, P + B, P + L,
+			"delay", "ease",
+			"onComplete", "onCompleteParams"];
 
 	eases.linear = 'linear';
 	eases[ei] = ei;
@@ -41,12 +50,11 @@ var twn = (function() {
 	eases[bk + eio] = cb + '(0.680, -0.550, 0.265, 1.550)';
 
 	to = function(target, duration, obj) {
-		//test
 		var i = prefixes.length,
 			delay = obj.delay || 0,
 			ease = obj.ease || "linear",
 			settings = duration ? 'all ' + duration + 's ' + (eases[ease] || ease) + ' ' + delay + 's': 'none',
-			complete, getEase;
+			complete;
 
 		complete = function() {
 			target.removeEventListener('webkitTransitionEnd', complete);
@@ -69,34 +77,37 @@ var twn = (function() {
 	};
 
 	set = function(target, obj) {
-		var j, transform, translate = '', rotation = '', scale = '';
-		for(j in obj) {
-			if(!/delay|ease|onComplete|onCompleteParams|scope/.test(j)) {
-				if(/left|width|top|height|margin|padding/.test(j)) {
-					target.style[j] = obj[j] + 'px';
-				} else if (/^x|^y|rotation|scaleX|scaleY/.test(j)) {
-					transform = true;
-					//need to change from id to something else
-					if(!translations[target.id]) {
-						translations[(target.id || (target.id = "twn" + id++))] = {
-							id:target.id,
-							x:0,
-							y:0,
-							rotation:0,
-							scaleX:1,
-							scaleY:1,
-							xOffset:target.offsetLeft,
-							yOffset:target.offsetTop,
-							rotationOffset:0,
-							scaleXOffset:0,
-							scaleYOffset:0
-						};
+		var j = properties.length, transform, translate = '', rotation = '', scale = '';
+		while(j--) {
+			var prop = properties[j];
+			if(obj.hasOwnProperty(prop)) {
+				if(!/delay|ease|onComplete|onCompleteParams|scope/.test(prop)) {
+					if(/left|width|top|height|margin|padding/.test(prop)) {
+						target.style[prop] = obj[prop] + 'px';
+					} else if (/^x|^y|rotation|scaleX|scaleY/.test(prop)) {
+						transform = true;
+						//need to change from id to something else
+						if(!translations[target.id]) {
+							translations[(target.id || (target.id = "twn" + id++))] = {
+								id:target.id,
+								x:0,
+								y:0,
+								rotation:0,
+								scaleX:1,
+								scaleY:1,
+								xOffset:target.offsetLeft,
+								yOffset:target.offsetTop,
+								rotationOffset:0,
+								scaleXOffset:0,
+								scaleYOffset:0
+							};
 
+						}
+
+						translations[target.id][prop] = obj[prop] - translations[target.id][prop + "Offset"];
+					} else {
+						target.style[prop] = obj[prop];
 					}
-
-					translations[target.id][j] = obj[j] - translations[target.id][j + "Offset"];
-				} else {
-					target.style[j] = obj[j];
 				}
 			}
 		}
